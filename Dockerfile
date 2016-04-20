@@ -36,7 +36,10 @@ RUN echo 'export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe' >> /etc/bash.bas
 RUN echo 'export PATH=$ORACLE_HOME/bin:$PATH' >> /etc/bash.bashrc
 RUN echo 'export ORACLE_SID=XE' >> /etc/bash.bashrc
 
+# Oracle data volume
 VOLUME /usr/lib/oracle/xe/oradata/XE
+# Oracle volume for init SQL scripts
+VOLUME /etc/entrypoint-initdb.d
 
 EXPOSE 1521
 EXPOSE 8080

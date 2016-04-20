@@ -28,10 +28,22 @@ docker pull alexeiled/docker-oracle-xe-11g
 ```
 **Note:** It's important to run Oracle XE with >1GB shared memory.
 
-**Example**: Running Oracle XE in `detached` mode with `1521` and `8080` ports opened and `2GB` shared memory:
+### Start Oracle XE
+Running Oracle XE in `detached` mode with `1521` and `8080` ports opened and `2GB` shared memory:
+
 ```
 docker run -d --shm-size=2g -p 1521:1521 -p 8080:8080 alexeiled/docker-oracle-xe-11g
 ```
+
+### Start Oracle XE and execute SQL on startup
+
+Put your `*.sql` files for database init into some local folder and mount this folder during container startup to `entrypoint-initdb.d` volume.
+
+```
+docker run -d --shm-size=1g -p 8080:8080 -p 1521:1521 -v /local-initdb:/entrypoint-initdb.d alexeiled/docker-oracle-xe-11g
+```
+
+### Connect
 
 Connect database with following setting:
 ```
