@@ -37,10 +37,10 @@ docker run -d --shm-size=2g -p 1521:1521 -p 8080:8080 alexeiled/docker-oracle-xe
 
 ### Start Oracle XE and execute SQL on startup
 
-Put your `*.sql` files for database init into some local folder and mount this folder during container startup to `entrypoint-initdb.d` volume.
+Put your `*.sql` files for database init into some local folder and mount this folder during container startup to `/etc/entrypoint-initdb.d` volume.
 
 ```
-docker run -d --shm-size=1g -p 8080:8080 -p 1521:1521 -v /local-initdb:/entrypoint-initdb.d alexeiled/docker-oracle-xe-11g
+docker run -d --shm-size=1g -p 8080:8080 -p 1521:1521 -v /local-initdb:/etc/entrypoint-initdb.d alexeiled/docker-oracle-xe-11g
 ```
 
 ### Connect
