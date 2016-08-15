@@ -7,6 +7,8 @@ export ORACLE_SID=XE
 export PATH=$ORACLE_HOME/bin:$PATH
 
 sed -i -E "s/HOST = [^)]+/HOST = ${HOSTNAME}/g" ${ORACLE_HOME}/network/admin/listener.ora
+sed -i -E "s/HOST = [^)]+/HOST = ${HOSTNAME}/g" ${ORACLE_HOME}/network/admin/tnsnames.ora
+
 service oracle-xe start
 
 echo "Database init..."
